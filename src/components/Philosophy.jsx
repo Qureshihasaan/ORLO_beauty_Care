@@ -7,7 +7,7 @@ const Philosophy = () => {
                 {/* Image */}
                 <div className="order-2 md:order-1">
                     <img
-                        src="/philosophy-product.png"
+                        src="/picture1.png"
                         alt="ORLO Product"
                         className="w-full h-auto"
                     />

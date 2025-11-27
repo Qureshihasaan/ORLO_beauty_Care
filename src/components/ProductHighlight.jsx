@@ -15,7 +15,7 @@ const ProductHighlight = () => {
                     <div className="space-y-4">
                         <div className="bg-gradient-to-br from-gray-300 to-gray-200 aspect-square"></div>
                         <div className="bg-gradient-to-br from-gray-200 to-gray-300 aspect-square flex items-center justify-center">
-                            <img src="/product-serum.png" alt="Product" className="w-full h-full object-cover" />
+                            <img src="/picture2.png" alt="Product" className="w-full h-full object-cover" />
                         </div>
                     </div>
                 </div>

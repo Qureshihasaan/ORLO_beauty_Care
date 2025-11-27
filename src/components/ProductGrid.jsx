@@ -12,7 +12,7 @@ const ProductCard = ({ image, title, price }) => {
                     />
                 ) : (
                     <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
-                        <span className="text-gray-400 text-xs">ORLO</span>
+                        <span className="text-gray-400 text-xs"><img src="/ORLO_logo.png"  height={44} width={80} /></span>
                     </div>
                 )}
             </div>
@@ -39,7 +39,9 @@ const ProductGrid = () => {
             <div className="max-w-7xl mx-auto">
                 {/* Header */}
                 <div className="text-center mb-12">
-                    <h2 className="font-serif text-4xl mb-8 tracking-wide">ORLO</h2>
+                    <h2 className="font-serif text-4xl mb-8 tracking-wide flex items-center justify-center">
+                        <img src="/ORLO_logo.png"  height={44} width={80} />
+                        </h2>
                     <div className="flex items-center justify-center space-x-4 mb-8">
                         <button className="px-6 py-2 bg-black text-white text-xs tracking-wider">
                             ALL

@@ -26,7 +26,7 @@ const Navbar = () => {
                     {/* Center Logo */}
                     <div className="absolute left-1/2 transform -translate-x-1/2">
                         <Link to="/" className="font-serif text-2xl tracking-widest">
-                            ORLO
+                           <img src="/ORLO_logo.png"  height={44} width={80} />
                         </Link>
                     </div>
 
