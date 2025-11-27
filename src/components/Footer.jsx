@@ -7,7 +7,9 @@ const Footer = () => {
             <div className="max-w-7xl mx-auto">
                 {/* Newsletter Section */}
                 <div className="text-center mb-16">
-                    <h2 className="font-serif text-3xl mb-4 tracking-widest">ORLO</h2>
+                    <h2 className="font-serif text-3xl mb-4 tracking-widest flex item-center justify-center">
+                        <img src='/logo-white.png' height={44} width={80} />
+                    </h2>
                     <p className="text-xl mb-6 tracking-wide">JOIN THE ORLO LIST</p>
                     <p className="text-sm mb-6 opacity-80">
                         Get exclusive access to new products and special offers
