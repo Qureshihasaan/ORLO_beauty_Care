@@ -1,5 +1,6 @@
 import React from 'react';
 import { Search, ShoppingBag } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     return (
@@ -8,9 +9,12 @@ const Navbar = () => {
                 <div className="flex items-center justify-between">
                     {/* Left Navigation */}
                     <div className="flex items-center space-x-8">
-                        <a href="#shop" className="text-sm tracking-wider hover:opacity-70 transition-opacity">
+                        <Link to="/shop" className="text-sm tracking-wider hover:opacity-70 transition-opacity">
                             SHOP
-                        </a>
+                        </Link>
+                        <Link to="/contact" className="text-sm tracking-wider hover:opacity-70 transition-opacity">
+                            CONTACT
+                        </Link>
                         <a href="#about" className="text-sm tracking-wider hover:opacity-70 transition-opacity">
                             ABOUT
                         </a>
@@ -21,9 +25,9 @@ const Navbar = () => {
 
                     {/* Center Logo */}
                     <div className="absolute left-1/2 transform -translate-x-1/2">
-                        <a href="/" className="font-serif text-2xl tracking-widest">
+                        <Link to="/" className="font-serif text-2xl tracking-widest">
                             ORLO
-                        </a>
+                        </Link>
                     </div>
 
                     {/* Right Actions */}
