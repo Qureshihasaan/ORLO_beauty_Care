@@ -8,12 +8,16 @@ const ProductHighlight = () => {
                 <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-4">
                         <div className="bg-gradient-to-br from-gray-200 to-gray-300 aspect-square flex items-center justify-center">
-                            <img src="/product-serum.png" alt="Product" className="w-full h-full object-cover" />
+                            <img src="/picture3.png" alt="Product" className="w-full h-full object-cover" />
                         </div>
-                        <div className="bg-gradient-to-br from-gray-300 to-gray-200 aspect-square"></div>
+                        <div className="bg-gradient-to-br from-gray-300 to-gray-200 aspect-square">
+                            <img src="/picture4.png" alt="Product" className="w-full h-full object-cover" />
+                        </div>
                     </div>
                     <div className="space-y-4">
-                        <div className="bg-gradient-to-br from-gray-300 to-gray-200 aspect-square"></div>
+                        <div className="bg-gradient-to-br from-gray-300 to-gray-200 aspect-square">
+                            <img src="/picture5.png" alt="Product" className="w-full h-full object-cover" />
+                        </div>
                         <div className="bg-gradient-to-br from-gray-200 to-gray-300 aspect-square flex items-center justify-center">
                             <img src="/picture2.png" alt="Product" className="w-full h-full object-cover" />
                         </div>
