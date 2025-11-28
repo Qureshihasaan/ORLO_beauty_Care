@@ -29,9 +29,9 @@ const ProductGrid = () => {
         { id: 3, title: 'THE SEASON Honey & Almond Lotion', price: '200', image: "/lotion.png" },
         { id: 4, title: 'THE SEASON RITUAL KIT', price: '280', image: "/ritual-kit.png" },
         { id: 5, title: 'THE NOURISHING OIL', price: '85', image: "/Nourshing-oil.png" },
-        { id: 6, title: 'THE LEGACY SERUM', price: '130', image: null },
+        { id: 6, title: 'Charcoal Detox & Cleanse Face Wash', price: '130', image: "/facewash.png" },
         { id: 7, title: 'THE SEASON TONER', price: '65', image: "/season-toner.png" },
-        { id: 8, title: 'THE SEASON RITUAL', price: '220', image: null },
+        { id: 8, title: 'Tea Tree Essential Oil', price: '220', image: "/tea-tree-oil.png" },
     ];
 
     return (

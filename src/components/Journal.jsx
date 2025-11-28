@@ -20,7 +20,15 @@ const Journal = () => {
             category: 'LIFESTYLE',
             date: 'OCTOBER 12, 2025',
             title: 'THE ART OF SLOW LIVING',
-            description: `Discover the beauty of slowing down and finding peace in the everyday moments. A guide to mindful living in a fast-paced world.lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quodlorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quodlorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quodlorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quodlorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quodlorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quodlorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quodlorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quodlorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod`
+            description: `Discover the beauty of slowing down and finding peace in the everyday moments. A guide to mindful living in a fast-paced world.
+
+In a world that never stops, choosing to pause is revolutionary. Mindful living isn’t another thing to add to your list; it’s learning to be present for the life you already have. Feel the warmth of your cup, notice your breath, really taste your food. These tiny acts reclaim what rushing steals.
+
+At first, your mind will fight it—pulling you to tomorrow’s worries or yesterday’s regrets. Gently bring it back. Again and again. That simple return is the whole practice.
+
+Soon, peace stops feeling like something you chase and starts feeling like something you already are. The days don’t get slower; you just stop missing them.
+
+Slow down. The present has been waiting.`
         }
     ];
 
@@ -35,9 +43,13 @@ const Journal = () => {
                 <div className="grid md:grid-cols-2 gap-12 items-center">
                     {/* Left Column - Featured Image */}
                     <div className="relative aspect-[4/5] bg-gray-100 overflow-hidden">
-                        <div className="w-full h-full bg-gray-200 hover:scale-105 transition-transform duration-700"></div>
+                        <div className="w-full h-full bg-gray-200 hover:scale-105 transition-transform duration-700">
+                            <img src="/jounral-image.png" className="w-full h-full object-cover" />
+                        </div>
                         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                             <span className="text-gray-400 text-xs tracking-widest">FEATURED STORY</span>
+                            <span className="text-gray-400 text-xs tracking-widest">
+
+                            </span>
                         </div>
                     </div>
 
