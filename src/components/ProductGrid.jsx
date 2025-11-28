@@ -1,8 +1,11 @@
 import React from 'react';
 
-const ProductCard = ({ image, title, price }) => {
+import { products } from '../data/products';
+import { Link } from 'react-router-dom';
+
+const ProductCard = ({ id, image, title, price }) => {
     return (
-        <div className="group cursor-pointer">
+        <Link to={`/product/${id}`} className="group cursor-pointer block">
             <div className="relative overflow-hidden bg-gray-100 mb-4 aspect-square flex items-center justify-center">
                 {image ? (
                     <img
@@ -18,22 +21,11 @@ const ProductCard = ({ image, title, price }) => {
             </div>
             <h3 className="text-sm tracking-wider mb-2">{title}</h3>
             <p className="text-sm">${price}</p>
-        </div>
+        </Link>
     );
 };
 
 const ProductGrid = () => {
-    const products = [
-        { id: 1, title: 'HARMONY SERUM', price: '120', image: "/serum.png" },
-        { id: 2, title: 'THE REJUVENATING FACE CREAM', price: '95', image: "/face-cream.png" },
-        { id: 3, title: 'THE SEASON Honey & Almond Lotion', price: '200', image: "/lotion.png" },
-        { id: 4, title: 'THE SEASON RITUAL KIT', price: '280', image: "/ritual-kit.png" },
-        { id: 5, title: 'THE NOURISHING OIL', price: '85', image: "/Nourshing-oil.png" },
-        { id: 6, title: 'Charcoal Detox & Cleanse Face Wash', price: '130', image: "/facewash.png" },
-        { id: 7, title: 'THE SEASON TONER', price: '65', image: "/season-toner.png" },
-        { id: 8, title: 'Tea Tree Essential Oil', price: '220', image: "/tea-tree-oil.png" },
-    ];
-
     return (
         <section className="bg-white py-20 px-6">
             <div className="max-w-7xl mx-auto">
@@ -42,7 +34,7 @@ const ProductGrid = () => {
                     <h2 className="font-serif text-4xl mb-8 tracking-wide flex items-center justify-center">
                         <img src="/ORLO_logo.png" height={44} width={80} />
                     </h2>
-                    <div className="flex items-center justify-center space-x-4 mb-8">
+                    <div className="flex flex-wrap items-center justify-center gap-4 mb-8">
                         <button className="px-6 py-2 bg-black text-white text-xs tracking-wider">
                             ALL
                         </button>

@@ -14,13 +14,13 @@ const Footer = () => {
                     <p className="text-sm mb-6 opacity-80">
                         Get exclusive access to new products and special offers
                     </p>
-                    <div className="flex max-w-md mx-auto">
+                    <div className="flex flex-col md:flex-row max-w-md mx-auto gap-4">
                         <input
                             type="email"
                             placeholder="Email address"
-                            className="flex-1 px-6 py-3 bg-transparent border border-white text-white placeholder-gray-400 focus:outline-none focus:border-gray-400"
+                            className="flex-1 px-6 py-3 bg-transparent border border-white text-white placeholder-gray-400 focus:outline-none focus:border-gray-400 w-full"
                         />
-                        <button className="px-8 py-3 bg-white text-black text-sm tracking-wider hover:bg-gray-200 transition-colors">
+                        <button className="px-8 py-3 bg-white text-black text-sm tracking-wider hover:bg-gray-200 transition-colors w-full md:w-auto">
                             SIGN UP
                         </button>
                     </div>
