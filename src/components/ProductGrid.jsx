@@ -21,15 +21,16 @@ const ProductCard = ({ image, title, price }) => {
         </div>
     );
 };
+
 const ProductGrid = () => {
     const products = [
         { id: 1, title: 'HARMONY SERUM', price: '120', image: "/serum.png" },
-        { id: 2, title: 'THE REJUVENATING FACE CREAM', price: '95', image: null },
-        { id: 3, title: 'THE SEASON SERUM', price: '145', image: null },
-        { id: 4, title: 'THE SEASON RITUAL KIT', price: '280', image: null },
-        { id: 5, title: 'THE NOURISHING OIL', price: '85', image: null },
-        { id: 6, title: 'THE SEASON TONER', price: '65', image: null },
-        { id: 7, title: 'THE LEGACY SERUM', price: '130', image: null },
+        { id: 2, title: 'THE REJUVENATING FACE CREAM', price: '95', image: "/face-cream.png" },
+        { id: 3, title: 'THE SEASON Honey & Almond Lotion', price: '200', image: "/lotion.png" },
+        { id: 4, title: 'THE SEASON RITUAL KIT', price: '280', image: "/ritual-kit.png" },
+        { id: 5, title: 'THE NOURISHING OIL', price: '85', image: "/Nourshing-oil.png" },
+        { id: 6, title: 'THE LEGACY SERUM', price: '130', image: null },
+        { id: 7, title: 'THE SEASON TONER', price: '65', image: "/season-toner.png" },
         { id: 8, title: 'THE SEASON RITUAL', price: '220', image: null },
     ];
 
