@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const JournalItem = ({ date, title, category, description }) => {
     return (
@@ -6,9 +7,9 @@ const JournalItem = ({ date, title, category, description }) => {
             <p className="text-xs tracking-widest text-gray-500 mb-2 uppercase">{category} — {date}</p>
             <h3 className="font-serif text-2xl mb-4 tracking-wide group-hover:opacity-70 transition-opacity">{title}</h3>
             <p className="text-sm text-gray-600 mb-6 leading-relaxed max-w-md">{description}</p>
-            <button className="text-xs tracking-widest border-b border-black pb-1 hover:opacity-60 transition-opacity">
+            <Link to="/journal" className="inline-block text-xs tracking-widest border-b border-black pb-1 hover:opacity-60 transition-opacity">
                 READ MORE
-            </button>
+            </Link>
         </div>
     );
 };

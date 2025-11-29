@@ -1,12 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Search, ShoppingBag, Menu, X } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import CartDrawer from './CartDrawer';
 
 const Navbar = () => {
-    const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isSearchOpen, setIsSearchOpen] = useState(false);
+    const [searchQuery, setSearchQuery] = useState('');
     const { cartCount, toggleCart } = useCart();
+    const navigate = useNavigate();
+
+    const handleSearch = (e) => {
+        e.preventDefault();
+        if (searchQuery.trim()) {
+            navigate(`/shop?search=${encodeURIComponent(searchQuery)}`);
+            setIsSearchOpen(false);
+            setSearchQuery('');
+        }
+    };
 
     return (
         <>
@@ -47,9 +59,39 @@ const Navbar = () => {
 
                         {/* Right Actions */}
                         <div className="flex items-center space-x-6">
-                            <button className="hover:opacity-70 transition-opacity" aria-label="Search">
-                                <Search size={20} />
-                            </button>
+                            {isSearchOpen ? (
+                                <form onSubmit={handleSearch} className="absolute top-full left-0 right-0 bg-white p-4 border-b border-gray-200 md:static md:p-0 md:border-none md:block">
+                                    <div className="relative flex items-center">
+                                        <input
+                                            type="text"
+                                            placeholder="Search..."
+                                            value={searchQuery}
+                                            onChange={(e) => setSearchQuery(e.target.value)}
+                                            className="w-full md:w-48 pl-4 pr-10 py-1 border-b border-black focus:outline-none text-sm"
+                                            autoFocus
+                                        />
+                                        <button type="submit" className="absolute right-0 top-1/2 transform -translate-y-1/2">
+                                            <Search size={16} />
+                                        </button>
+                                        <button 
+                                            type="button" 
+                                            onClick={() => setIsSearchOpen(false)}
+                                            className="ml-2 md:hidden"
+                                        >
+                                            <X size={16} />
+                                        </button>
+                                    </div>
+                                </form>
+                            ) : (
+                                <button 
+                                    className="hover:opacity-70 transition-opacity" 
+                                    aria-label="Search"
+                                    onClick={() => setIsSearchOpen(true)}
+                                >
+                                    <Search size={20} />
+                                </button>
+                            )}
+                            
                             <button 
                                 className="hover:opacity-70 transition-opacity relative" 
                                 aria-label="Shopping Cart"

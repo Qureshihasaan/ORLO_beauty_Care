@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const ProductHighlight = () => {
     return (
@@ -39,9 +40,9 @@ const ProductHighlight = () => {
                     </p>
                     <div className="space-y-4">
                         <p className="text-xs tracking-wider">TOPNOTES</p>
-                        <button className="w-full md:w-auto px-12 py-4 bg-black text-white text-sm tracking-widest hover:bg-gray-800 transition-colors">
+                        <Link to="/shop" className="inline-block w-full md:w-auto px-12 py-4 bg-black text-white text-sm tracking-widest hover:bg-gray-800 transition-colors text-center">
                             ADD TO CART
-                        </button>
+                        </Link>
                     </div>
                 </div>
             </div>

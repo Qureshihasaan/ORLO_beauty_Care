@@ -1,5 +1,6 @@
 import React from 'react';
 import { Facebook, Twitter, Youtube, Instagram } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
     return (
@@ -31,28 +32,28 @@ const Footer = () => {
                     <div>
                         <h3 className="text-sm tracking-wider mb-4 font-semibold">SHOP</h3>
                         <ul className="space-y-2 text-sm opacity-80">
-                            <li><a href="#" className="hover:opacity-100">Shop</a></li>
-                            <li><a href="#" className="hover:opacity-100">Contact Us</a></li>
-                            <li><a href="#" className="hover:opacity-100">FAQ</a></li>
-                            <li><a href="#" className="hover:opacity-100">Legal</a></li>
+                            <li><Link to="/shop" className="hover:opacity-100">Shop</Link></li>
+                            <li><Link to="/contact" className="hover:opacity-100">Contact Us</Link></li>
+                            <li><Link to="/contact" className="hover:opacity-100">FAQ</Link></li>
+                            <li><Link to="/contact" className="hover:opacity-100">Legal</Link></li>
                         </ul>
                     </div>
                     <div>
                         <h3 className="text-sm tracking-wider mb-4 font-semibold">ABOUT</h3>
                         <ul className="space-y-2 text-sm opacity-80">
-                            <li><a href="#" className="hover:opacity-100">About Us</a></li>
-                            <li><a href="#" className="hover:opacity-100">Accessibility</a></li>
-                            <li><a href="#" className="hover:opacity-100">Careers</a></li>
-                            <li><a href="#" className="hover:opacity-100">Contact</a></li>
+                            <li><Link to="/about" className="hover:opacity-100">About Us</Link></li>
+                            <li><Link to="/contact" className="hover:opacity-100">Accessibility</Link></li>
+                            <li><Link to="/about" className="hover:opacity-100">Careers</Link></li>
+                            <li><Link to="/contact" className="hover:opacity-100">Contact</Link></li>
                         </ul>
                     </div>
                     <div>
                         <h3 className="text-sm tracking-wider mb-4 font-semibold">LEGAL</h3>
                         <ul className="space-y-2 text-sm opacity-80">
-                            <li><a href="#" className="hover:opacity-100">Blog</a></li>
-                            <li><a href="#" className="hover:opacity-100">FAQ</a></li>
-                            <li><a href="#" className="hover:opacity-100">Privacy Policy</a></li>
-                            <li><a href="#" className="hover:opacity-100">Terms of Service</a></li>
+                            <li><Link to="/journal" className="hover:opacity-100">Blog</Link></li>
+                            <li><Link to="/contact" className="hover:opacity-100">FAQ</Link></li>
+                            <li><Link to="/contact" className="hover:opacity-100">Privacy Policy</Link></li>
+                            <li><Link to="/contact" className="hover:opacity-100">Terms of Service</Link></li>
                         </ul>
                     </div>
                     <div>
