@@ -91,7 +91,7 @@ const StyledWrapper = styled.div`
     inset: 0;
     display: grid;
     place-content: center;
-    padding: 0%;
+    padding: 2%;
   }
 
   .loader .logo img {
