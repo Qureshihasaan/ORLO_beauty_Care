@@ -7,7 +7,7 @@ const Loader = () => {
       <div className="loader">
         <div className="box">
           <div className="logo">
-            <img src="/ORLO_logo.png" alt="ORLO Logo" />
+            <img src="/o.png" alt="ORLO Logo" />
           </div>
         </div>
         <div className="box" />
@@ -91,7 +91,7 @@ const StyledWrapper = styled.div`
     inset: 0;
     display: grid;
     place-content: center;
-    padding: 7%;
+    padding: 0%;
   }
 
   .loader .logo img {
