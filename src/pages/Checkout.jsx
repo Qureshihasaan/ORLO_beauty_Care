@@ -1,12 +1,55 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useCart } from '../context/CartContext';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { Link } from 'react-router-dom';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Checkout = () => {
     const { cartItems, cartTotal } = useCart();
     const [isSubmitted, setIsSubmitted] = useState(false);
+    
+    const containerRef = useRef(null);
+    const formRef = useRef(null);
+    const summaryRef = useRef(null);
+
+    useEffect(() => {
+        if (cartItems.length === 0 || isSubmitted) return;
+
+        const ctx = gsap.context(() => {
+            // Form from left
+            gsap.from(formRef.current, {
+                x: -100,
+                opacity: 0,
+                duration: 1,
+                ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: containerRef.current,
+                    start: 'top 80%',
+                    toggleActions: 'play none none reverse'
+                }
+            });
+
+            // Order summary from right
+            gsap.from(summaryRef.current, {
+                x: 100,
+                opacity: 0,
+                duration: 1,
+                ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: containerRef.current,
+                    start: 'top 80%',
+                    toggleActions: 'play none none reverse'
+                }
+            });
+
+        }, containerRef);
+
+        return () => ctx.revert();
+    }, [cartItems.length, isSubmitted]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -16,7 +59,7 @@ const Checkout = () => {
 
     if (isSubmitted) {
         return (
-            <div className="min-h-screen flex flex-col">
+            <div className="min-h-screen flex flex-col overflow-x-hidden">
                 <Navbar />
                 <main className="flex-grow flex items-center justify-center px-6">
                     <div className="text-center space-y-6">
@@ -34,7 +77,7 @@ const Checkout = () => {
 
     if (cartItems.length === 0) {
         return (
-            <div className="min-h-screen flex flex-col">
+            <div className="min-h-screen flex flex-col overflow-x-hidden">
                 <Navbar />
                 <main className="flex-grow flex items-center justify-center px-6">
                     <div className="text-center space-y-6">
@@ -50,12 +93,12 @@ const Checkout = () => {
     }
 
     return (
-        <div className="min-h-screen flex flex-col">
+        <div className="min-h-screen flex flex-col overflow-x-hidden">
             <Navbar />
             <main className="flex-grow pt-32 pb-20 px-6">
-                <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12">
+                <div ref={containerRef} className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12">
                     {/* Checkout Form */}
-                    <div>
+                    <div ref={formRef}>
                         <h2 className="font-serif text-2xl tracking-wide mb-8">SHIPPING DETAILS</h2>
                         <form onSubmit={handleSubmit} className="space-y-6">
                             <div className="grid grid-cols-2 gap-6">
@@ -84,7 +127,7 @@ const Checkout = () => {
                     </div>
 
                     {/* Order Summary */}
-                    <div className="bg-gray-50 p-8 h-fit">
+                    <div ref={summaryRef} className="bg-gray-50 p-8 h-fit">
                         <h2 className="font-serif text-2xl tracking-wide mb-8">ORDER SUMMARY</h2>
                         <div className="space-y-6 mb-8">
                             {cartItems.map((item) => (

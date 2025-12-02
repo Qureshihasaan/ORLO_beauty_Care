@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Search, ShoppingBag, Menu, X } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import CartDrawer from './CartDrawer';
+import { gsap } from 'gsap';
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -10,6 +11,68 @@ const Navbar = () => {
     const [searchQuery, setSearchQuery] = useState('');
     const { cartCount, toggleCart } = useCart();
     const navigate = useNavigate();
+    
+    const navRef = useRef(null);
+    const leftNavRef = useRef([]);
+    const logoRef = useRef(null);
+    const rightActionsRef = useRef([]);
+    const mobileMenuRef = useRef(null);
+
+    useEffect(() => {
+        const ctx = gsap.context(() => {
+            // Navbar slide down animation
+            gsap.from(navRef.current, {
+                y: -100,
+                opacity: 0,
+                duration: 0.8,
+                ease: 'power3.out'
+            });
+
+            // Logo fade in
+            gsap.from(logoRef.current, {
+                opacity: 0,
+                scale: 0.8,
+                duration: 0.6,
+                delay: 0.3,
+                ease: 'back.out(1.7)'
+            });
+
+            // Left navigation stagger
+            gsap.from(leftNavRef.current, {
+                y: -20,
+                opacity: 1,
+                duration: 0.5,
+                stagger: 0.1,
+                delay: 0.4,
+                ease: 'power3.out'
+            });
+
+            // Right actions stagger
+            gsap.from(rightActionsRef.current, {
+                y: -20,
+                opacity: 1,
+                duration: 0.5,
+                stagger: 0.1,
+                delay: 0.5,
+                ease: 'power3.out'
+            });
+
+        }, navRef);
+
+        return () => ctx.revert();
+    }, []);
+
+    // Mobile menu animation
+    useEffect(() => {
+        if (isMenuOpen && mobileMenuRef.current) {
+            gsap.from(mobileMenuRef.current, {
+                height: 0,
+                opacity: 0,
+                duration: 0.3,
+                ease: 'power2.out'
+            });
+        }
+    }, [isMenuOpen]);
 
     const handleSearch = (e) => {
         e.preventDefault();
@@ -22,7 +85,7 @@ const Navbar = () => {
 
     return (
         <>
-            <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-200">
+            <nav ref={navRef} className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-200">
                 <div className="max-w-7xl mx-auto px-6 py-4">
                     <div className="flex items-center justify-between">
                         {/* Mobile Menu Button */}
@@ -36,23 +99,23 @@ const Navbar = () => {
 
                         {/* Left Navigation - Desktop */}
                         <div className="hidden md:flex items-center space-x-8">
-                            <Link to="/shop" className="text-sm tracking-wider hover:opacity-70 transition-opacity">
+                            <Link ref={(el) => (leftNavRef.current[0] = el)} to="/shop" className="text-sm tracking-wider hover:opacity-70 transition-opacity">
                                 SHOP
                             </Link>
-                            <Link to="/contact" className="text-sm tracking-wider hover:opacity-70 transition-opacity">
+                            <Link ref={(el) => (leftNavRef.current[1] = el)} to="/contact" className="text-sm tracking-wider hover:opacity-70 transition-opacity">
                                 CONTACT
                             </Link>
-                            <Link to="/about" className="text-sm tracking-wider hover:opacity-70 transition-opacity">
+                            <Link ref={(el) => (leftNavRef.current[2] = el)} to="/about" className="text-sm tracking-wider hover:opacity-70 transition-opacity">
                                 ABOUT
                             </Link>
-                            <Link to="/journal" className="text-sm tracking-wider hover:opacity-70 transition-opacity">
+                            <Link ref={(el) => (leftNavRef.current[3] = el)} to="/journal" className="text-sm tracking-wider hover:opacity-70 transition-opacity">
                                 JOURNAL
                             </Link>
                         </div>
 
                         {/* Center Logo */}
                         <div className="absolute left-1/2 transform -translate-x-1/2">
-                            <Link to="/" className="font-serif text-2xl tracking-widest">
+                            <Link ref={logoRef} to="/" className="font-serif text-2xl tracking-widest">
                                <img src="/ORLO_logo.png"  height={44} width={80} />
                             </Link>
                         </div>
@@ -84,6 +147,7 @@ const Navbar = () => {
                                 </form>
                             ) : (
                                 <button 
+                                    ref={(el) => (rightActionsRef.current[0] = el)}
                                     className="hover:opacity-70 transition-opacity" 
                                     aria-label="Search"
                                     onClick={() => setIsSearchOpen(true)}
@@ -93,6 +157,7 @@ const Navbar = () => {
                             )}
                             
                             <button 
+                                ref={(el) => (rightActionsRef.current[1] = el)}
                                 className="hover:opacity-70 transition-opacity relative" 
                                 aria-label="Shopping Cart"
                                 onClick={toggleCart}
@@ -110,7 +175,7 @@ const Navbar = () => {
 
                 {/* Mobile Menu Overlay */}
                 {isMenuOpen && (
-                    <div className="md:hidden absolute top-full left-0 right-0 bg-white border-b border-gray-200 py-4 px-6 flex flex-col space-y-4 shadow-lg">
+                    <div ref={mobileMenuRef} className="md:hidden absolute top-full left-0 right-0 bg-white border-b border-gray-200 py-4 px-6 flex flex-col space-y-4 shadow-lg">
                         <Link 
                             to="/shop" 
                             className="text-sm tracking-wider hover:opacity-70 transition-opacity"

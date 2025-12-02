@@ -1,13 +1,84 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Facebook, Twitter, Youtube, Instagram } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Footer = () => {
+    const footerRef = useRef(null);
+    const newsletterRef = useRef(null);
+    const columnsRef = useRef([]);
+    const socialRef = useRef(null);
+    const copyrightRef = useRef(null);
+
+    useEffect(() => {
+        const ctx = gsap.context(() => {
+            // Newsletter section from bottom
+            gsap.from(newsletterRef.current, {
+                y: 80,
+                opacity: 0,
+                duration: 1,
+                ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: footerRef.current,
+                    start: 'top 80%',
+                    toggleActions: 'play none none reverse'
+                }
+            });
+
+            // Footer columns stagger
+            gsap.from(columnsRef.current, {
+                y: 60,
+                opacity: 0,
+                duration: 0.8,
+                stagger: 0.15,
+                ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: footerRef.current,
+                    start: 'top 70%',
+                    toggleActions: 'play none none reverse'
+                }
+            });
+
+            // Social icons
+            gsap.from(socialRef.current, {
+                scale: 0,
+                opacity: 0,
+                duration: 0.6,
+                delay: 0.5,
+                ease: 'back.out(1.7)',
+                scrollTrigger: {
+                    trigger: footerRef.current,
+                    start: 'top 70%',
+                    toggleActions: 'play none none reverse'
+                }
+            });
+
+            // Copyright fade in
+            gsap.from(copyrightRef.current, {
+                opacity: 0,
+                duration: 0.8,
+                delay: 0.8,
+                ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: footerRef.current,
+                    start: 'top 70%',
+                    toggleActions: 'play none none reverse'
+                }
+            });
+
+        }, footerRef);
+
+        return () => ctx.revert();
+    }, []);
+
     return (
-        <footer className="bg-black text-white py-16 px-6">
+        <footer ref={footerRef} className="bg-black text-white py-16 px-6">
             <div className="max-w-7xl mx-auto">
                 {/* Newsletter Section */}
-                <div className="text-center mb-16">
+                <div ref={newsletterRef} className="text-center mb-16">
                     <h2 className="font-serif text-3xl mb-4 tracking-widest flex item-center justify-center">
                         <img src='/logo-white.png' height={44} width={80} />
                     </h2>
@@ -29,7 +100,7 @@ const Footer = () => {
 
                 {/* Footer Links */}
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
-                    <div>
+                    <div ref={(el) => (columnsRef.current[0] = el)}>
                         <h3 className="text-sm tracking-wider mb-4 font-semibold">SHOP</h3>
                         <ul className="space-y-2 text-sm opacity-80">
                             <li><Link to="/shop" className="hover:opacity-100">Shop</Link></li>
@@ -38,7 +109,7 @@ const Footer = () => {
                             <li><Link to="/contact" className="hover:opacity-100">Legal</Link></li>
                         </ul>
                     </div>
-                    <div>
+                    <div ref={(el) => (columnsRef.current[1] = el)}>
                         <h3 className="text-sm tracking-wider mb-4 font-semibold">ABOUT</h3>
                         <ul className="space-y-2 text-sm opacity-80">
                             <li><Link to="/about" className="hover:opacity-100">About Us</Link></li>
@@ -47,7 +118,7 @@ const Footer = () => {
                             <li><Link to="/contact" className="hover:opacity-100">Contact</Link></li>
                         </ul>
                     </div>
-                    <div>
+                    <div ref={(el) => (columnsRef.current[2] = el)}>
                         <h3 className="text-sm tracking-wider mb-4 font-semibold">LEGAL</h3>
                         <ul className="space-y-2 text-sm opacity-80">
                             <li><Link to="/journal" className="hover:opacity-100">Blog</Link></li>
@@ -56,9 +127,9 @@ const Footer = () => {
                             <li><Link to="/contact" className="hover:opacity-100">Terms of Service</Link></li>
                         </ul>
                     </div>
-                    <div>
+                    <div ref={(el) => (columnsRef.current[3] = el)}>
                         <h3 className="text-sm tracking-wider mb-4 font-semibold">SOCIAL</h3>
-                        <div className="flex space-x-4">
+                        <div ref={socialRef} className="flex space-x-4">
                             <a href="#" className="hover:opacity-70 transition-opacity">
                                 <Facebook size={20} />
                             </a>
@@ -76,7 +147,7 @@ const Footer = () => {
                 </div>
 
                 {/* Copyright */}
-                <div className="text-center text-xs opacity-60 border-t border-gray-800 pt-8">
+                <div ref={copyrightRef} className="text-center text-xs opacity-60 border-t border-gray-800 pt-8">
                     <p>©2025 ORLO. ALL RIGHTS RESERVED.</p>
                 </div>
             </div>
